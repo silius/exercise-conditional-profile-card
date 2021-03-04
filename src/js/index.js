@@ -32,7 +32,9 @@ function render(variables = {}) {
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
+          <img src="https://randomuser.me/api/portraits/${
+            variables.includeProfile
+          }/${Math.floor(Math.random() * 50 + 1)}.jpg" class="photo" />
           <h1>${variables.name == null ? "Jane " : variables.name} ${
     variables.lastname == null ? "Doe" : variables.lastname
   }</h1>
@@ -65,6 +67,7 @@ window.onload = function() {
   window.variables = {
     // if includeCover is true the algorithm should
     includeCover: true,
+    includeProfile: "women",
     // this is the url of the image that will used as background for the profile cover
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
